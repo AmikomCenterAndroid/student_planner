@@ -1,2 +1,3 @@
-part of 'screens.dart';
-import 'package:flutter/material.dart'
+import 'package:flutter/material.dart';
+
+part 'login_screen.dart';
