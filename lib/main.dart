@@ -11,7 +11,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       initialRoute: '/login',
-      getPages: [],
+      getPages: [
+      GetPage(name: '/login', page: () => LoginScreen()),],
       theme: ThemeData(primarySwatch: Colors.purple),
       title: "Student Planner",
     );
