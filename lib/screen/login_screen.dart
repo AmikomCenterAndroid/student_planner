@@ -34,8 +34,14 @@ class _LoginScreenState extends State<LoginScreen> {
           60.heightBox,
           MyButton(
             text: 'Login',
-            onTap: () {
-              print('Clicked');
+            onTap: () async {
+              User user =
+                  await AuthServices.signIn("candra@candra.com", "candra");
+              if (user != null) {
+                VxToast.show(context, msg: 'Berhasil');
+              } else {
+                VxToast.show(context, msg: 'Gagal');
+              }
             },
           ),
         ]).scrollVertical().p16()));
