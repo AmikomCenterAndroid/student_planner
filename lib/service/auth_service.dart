@@ -33,7 +33,7 @@ class AuthServices {
     }
   }
 
-  //TODO fungsi signup
-
-  //TODO fungsi signout
+  static Future<void> signOut() async {
+    await auth.signOut();
+  }
 }
