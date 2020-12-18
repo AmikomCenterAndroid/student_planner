@@ -1,23 +1,28 @@
 part of 'screens.dart';
 
-class LoginScreen extends StatefulWidget {
+class RegisterScreen extends StatefulWidget {
   @override
-  _LoginScreenState createState() => _LoginScreenState();
+  _RegisterScreenState createState() => _RegisterScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _RegisterScreenState extends State<RegisterScreen> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passController = TextEditingController();
-  FirebaseAuth auth = FirebaseAuth.instance;
 
-  @override
-  void initState() {
-    super.initState();
-    if (auth.currentUser != null) {
-      Future.delayed(Duration.zero, () {
-        Get.offAllNamed('/home');
-      });
-    }
+  Widget buttonMasuk = HStack([
+    Icon(Icons.arrow_back_ios_outlined),
+    16.widthBox,
+    'Masuk'.text.hexColor('#FB7455').make(),
+  ]).onTap(() {
+    Get.back();
+  });
+
+  Widget titleDaftar = 'Daftar'.text.bold.size(36).make();
+
+  Widget descTitle() {
+    return VxBox(
+      child: "Belajar untuk produktif\nSetiap waktu".text.end.make(),
+    ).make().wFull(context);
   }
 
   @override
@@ -29,53 +34,41 @@ class _LoginScreenState extends State<LoginScreen> {
           VxBox(
               child: HStack(
             [
-              titleMasuk,
-              buttonDaftar,
+              buttonMasuk,
+              titleDaftar,
             ],
             alignment: MainAxisAlignment.spaceBetween,
           )).width(context.screenWidth).make(),
           8.heightBox,
-          descTitle,
+          descTitle(),
           130.heightBox,
           MyTextfield(
-            title: 'Email',
             controller: emailController,
+            title: 'Email',
             hint: 'Masukkan email kamu',
           ),
           10.heightBox,
           MyTextfield(
-            isPassword: true,
             controller: passController,
+            isPassword: true,
             title: 'Password',
             hint: 'Masukkan password kamu',
           ),
           60.heightBox,
           MyButton(
-            text: 'Masuk',
+            text: 'Daftar',
             onTap: () async {
               String email = emailController.text.trim();
               String password = passController.text.trim();
 
-              User user = await AuthServices.signIn(email, password);
-              if (user == null) {
-                Get.snackbar('Masuk', 'Akun $email gagal masuk');
-              } else {
+              User user = await AuthServices.signUp(email, password);
+              if (user != null) {
                 Get.offAllNamed('/home');
+              } else {
+                Get.snackbar('Daftar', 'Akun $email gagal mendaftar');
               }
             },
           ),
         ]).scrollVertical().p16()));
   }
-
-  Widget titleMasuk = 'Masuk'.text.bold.size(36).make();
-
-  Widget buttonDaftar = HStack([
-    'Daftar'.text.hexColor('#FB7455').make(),
-    16.widthBox,
-    Icon(Icons.arrow_forward_ios),
-  ]).onTap(() {
-    Get.toNamed('/register');
-  });
-
-  Widget descTitle = "Belajar untuk produktif\nSetiap waktu".text.make();
 }

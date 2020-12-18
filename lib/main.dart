@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart' as bloc;
 import 'package:get/get.dart';
 import 'screen/screens.dart';
 
@@ -22,7 +23,15 @@ class MyApp extends StatelessWidget {
           return GetMaterialApp(
             initialRoute: '/login',
             getPages: [
-              GetPage(name: '/login', page: () => LoginScreen()),
+              GetPage(
+                  name: '/login',
+                  page: () => LoginScreen(),
+                  transition: Transition.cupertino),
+              GetPage(
+                  name: '/register',
+                  page: () => RegisterScreen(),
+                  transition: Transition.rightToLeft),
+              GetPage(name: '/home', page: () => HomeScreen()),
             ],
             theme: ThemeData(primarySwatch: Colors.purple),
             title: "Student Planner",
