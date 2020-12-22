@@ -1,6 +1,4 @@
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+part of 'screens.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -24,6 +22,10 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return VxBox(
+            child: Lottie.asset('assets/animations/loading.json',
+                width: 20, height: 20))
+        .white
+        .make();
   }
 }
