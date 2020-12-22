@@ -63,7 +63,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
               User user = await AuthServices.signUp(email, password);
               if (user != null) {
-                Get.offAllNamed('/home');
+                Get.offAllNamed('/home', arguments: user.email);
               } else {
                 Get.snackbar('Daftar', 'Akun $email gagal mendaftar');
               }

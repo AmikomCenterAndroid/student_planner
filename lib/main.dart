@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart' as bloc;
 import 'package:get/get.dart';
+import 'package:student_planner/screen/splash_screen.dart';
 import 'screen/screens.dart';
 
 void main() {
@@ -21,11 +22,15 @@ class MyApp extends StatelessWidget {
         }
         if (snapshot.connectionState == ConnectionState.done) {
           return GetMaterialApp(
-            initialRoute: '/login',
+            initialRoute: '/splash',
             getPages: [
               GetPage(
                   name: '/login',
                   page: () => LoginScreen(),
+                  transition: Transition.cupertino),
+              GetPage(
+                  name: '/splash',
+                  page: () => SplashScreen(),
                   transition: Transition.cupertino),
               GetPage(
                   name: '/register',

@@ -11,12 +11,14 @@ class _SplashScreenState extends State<SplashScreen> {
   FirebaseAuth auth = FirebaseAuth.instance;
 
   @override
-  void initState() async {
+  void initState() {
     super.initState();
     if (auth.currentUser != null) {
-      await Get.offAllNamed('/home', arguments: auth.currentUser.email);
+      Future.delayed(Duration.zero, () {
+        Get.offAllNamed('/home', arguments: auth.currentUser.email);
+      });
     } else {
-      await Get.offAllNamed('/login');
+      Get.offAllNamed('/login');
     }
   }
 

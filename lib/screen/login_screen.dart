@@ -11,16 +11,6 @@ class _LoginScreenState extends State<LoginScreen> {
   FirebaseAuth auth = FirebaseAuth.instance;
 
   @override
-  void initState() {
-    super.initState();
-    if (auth.currentUser != null) {
-      Future.delayed(Duration.zero, () {
-        Get.offAllNamed('/home');
-      });
-    }
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.white,
