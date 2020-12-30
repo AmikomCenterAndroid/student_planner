@@ -3,37 +3,45 @@ part of 'services.dart';
 class AuthServices {
   static FirebaseAuth auth = FirebaseAuth.instance;
 
-  static Future<User> signIn(String email, String password) async {
+  static Future<UserResult> signIn(String email, String password) async {
     try {
       UserCredential userCredential = await FirebaseAuth.instance
           .signInWithEmailAndPassword(email: email, password: password);
-      return userCredential.user;
+      return UserResult(user: userCredential.user);
     } on FirebaseAuthException catch (e) {
-      if (e.code == 'user-not-found') {
-        print('No user found for that email.');
-      } else if (e.code == 'wrong-password') {
-        print('Wrong password provided for that user.');
-      }
-      return null;
+      return UserResult(
+          message: e.toString().split('/')[1].split(']')[1].trim());
     }
   }
 
-  static Future<User> signUp(String email, String password) async {
+  static Future<UserResult> signUp(
+      String email, String password, UserModel userModel) async {
     try {
       UserCredential userCredential = await FirebaseAuth.instance
           .createUserWithEmailAndPassword(email: email, password: password);
-      return userCredential.user;
+
+      UserModel user = userCredential.user.convertToUser(
+        email: email,
+        nama: userModel.nama,
+      );
+
+      await UserService.setUser(user);
+
+      return UserResult(user: userCredential.user);
     } on FirebaseAuthException catch (e) {
-      if (e.code == 'user-not-found') {
-        print('No user found for that email.');
-      } else if (e.code == 'wrong-password') {
-        print('Wrong password provided for that user.');
-      }
-      return null;
+      return UserResult(
+          message: e.toString().split('/')[1].split(']')[1].trim());
     }
   }
 
   static Future<void> signOut() async {
     await auth.signOut();
   }
+}
+
+class UserResult {
+  final String message;
+  final User user;
+
+  UserResult({this.message, this.user});
 }

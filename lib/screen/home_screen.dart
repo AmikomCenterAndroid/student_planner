@@ -6,11 +6,15 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  String email = Get.arguments;
+  String uid = Get.arguments;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(child: Text(email)),
+      body: SafeArea(
+          child: Text(uid).onTap(() {
+        AuthServices.signOut();
+        Get.offAllNamed('splash');
+      })),
     );
   }
 }

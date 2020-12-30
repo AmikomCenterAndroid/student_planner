@@ -13,10 +13,12 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
     if (auth.currentUser != null) {
       Future.delayed(Duration.zero, () {
-        Get.offAllNamed('/home', arguments: auth.currentUser.email);
+        Get.offAllNamed('/home', arguments: auth.currentUser.uid);
       });
     } else {
-      Get.offAllNamed('/login');
+      Future.delayed(Duration.zero, () {
+        Get.offAllNamed('/login');
+      });
     }
   }
 

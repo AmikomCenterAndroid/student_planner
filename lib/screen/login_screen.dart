@@ -46,11 +46,11 @@ class _LoginScreenState extends State<LoginScreen> {
               String email = emailController.text.trim();
               String password = passController.text.trim();
 
-              User user = await AuthServices.signIn(email, password);
-              if (user == null) {
-                Get.snackbar('Masuk', 'Akun $email gagal masuk');
+              UserResult user = await AuthServices.signIn(email, password);
+              if (user.user == null) {
+                Get.snackbar('Masuk', user.message);
               } else {
-                Get.offAllNamed('/home');
+                Get.offAllNamed('/home', arguments: user.user.uid);
               }
             },
           ),

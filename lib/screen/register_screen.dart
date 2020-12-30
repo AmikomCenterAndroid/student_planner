@@ -6,6 +6,7 @@ class RegisterScreen extends StatefulWidget {
 }
 
 class _RegisterScreenState extends State<RegisterScreen> {
+  TextEditingController namaController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController passController = TextEditingController();
 
@@ -43,6 +44,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
           descTitle(),
           130.heightBox,
           MyTextfield(
+            controller: namaController,
+            title: 'Nama',
+            hint: 'Masukkan nama kamu',
+          ),
+          10.heightBox,
+          MyTextfield(
             controller: emailController,
             title: 'Email',
             hint: 'Masukkan email kamu',
@@ -58,14 +65,21 @@ class _RegisterScreenState extends State<RegisterScreen> {
           MyButton(
             text: 'Daftar',
             onTap: () async {
+              String nama = namaController.text.trim();
               String email = emailController.text.trim();
               String password = passController.text.trim();
 
-              User user = await AuthServices.signUp(email, password);
+              UserResult user = await AuthServices.signUp(
+                  email,
+                  password,
+                  UserModel(
+                    email: email,
+                    nama: nama,
+                  ));
               if (user != null) {
-                Get.offAllNamed('/home', arguments: user.email);
+                Get.offAllNamed('/home', arguments: user.user);
               } else {
-                Get.snackbar('Daftar', 'Akun $email gagal mendaftar');
+                Get.snackbar('Daftar', user.message);
               }
             },
           ),

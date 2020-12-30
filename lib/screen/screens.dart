@@ -5,6 +5,7 @@ import 'package:lottie/lottie.dart';
 import 'package:student_planner/service/services.dart';
 import 'package:student_planner/widget/widgets.dart';
 import 'package:velocity_x/velocity_x.dart';
+import 'package:student_planner/model/models.dart';
 
 part 'login_screen.dart';
 part 'register_screen.dart';
