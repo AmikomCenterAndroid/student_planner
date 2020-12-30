@@ -25,12 +25,12 @@ dependencies:
     sdk: flutter
   # User Interfaces
   cached_network_image: ^2.3.3
-  cupertino_icons: ^1.0.1
+  cupertino_icons: ^1.0.0
   velocity_x: ^1.0.1
   lottie: ^0.7.0+1
 
   # Database Service
-  cloud_firestore: ^0.14.3+1
+  cloud_firestore: ^0.14.4
   firebase_auth: ^0.18.3+1
   firebase_core: ^0.5.3
   firebase_storage: ^5.2.0
