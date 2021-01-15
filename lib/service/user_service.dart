@@ -18,9 +18,9 @@ class UserService {
     Map<String, dynamic> data = snapshot.data();
 
     return UserModel(
-      uid: uid,
-      email: data['email'],
-      nama: data['nama'],
-    );
+        uid: uid,
+        email: data['email'],
+        nama: data['nama'],
+        photoUrl: data['photoUrl']);
   }
 }

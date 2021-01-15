@@ -14,6 +14,7 @@ class _SplashScreenState extends State<SplashScreen> {
     if (auth.currentUser != null) {
       Future.delayed(Duration.zero, () {
         Get.offAllNamed('/home', arguments: auth.currentUser.uid);
+        context.read<UserCubit>().loadUser(auth.currentUser.uid);
       });
     } else {
       Future.delayed(Duration.zero, () {

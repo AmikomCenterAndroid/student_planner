@@ -43,15 +43,8 @@ class _LoginScreenState extends State<LoginScreen> {
           MyButton(
             text: 'Masuk',
             onTap: () async {
-              String email = emailController.text.trim();
-              String password = passController.text.trim();
-
-              UserResult user = await AuthServices.signIn(email, password);
-              if (user.user == null) {
-                Get.snackbar('Masuk', user.message);
-              } else {
-                Get.offAllNamed('/home', arguments: user.user.uid);
-              }
+              context.read<UserCubit>().signInUser(context,
+                  emailController.text.trim(), passController.text.trim());
             },
           ),
         ]).scrollVertical().p16()));

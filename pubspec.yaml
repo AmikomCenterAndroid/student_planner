@@ -28,6 +28,8 @@ dependencies:
   cupertino_icons: ^1.0.0
   velocity_x: ^1.0.1
   lottie: ^0.7.0+1
+  google_fonts: ^1.1.1
+  ars_progress_dialog: ^0.1.2
 
   # Database Service
   cloud_firestore: ^0.14.4
@@ -38,7 +40,8 @@ dependencies:
   # State Management
   get: ^3.17.1
   flutter_bloc: ^6.1.1
-
+  provider: ^4.3.2+4
+  equatable: ^1.2.5
 
 dev_dependencies:
   flutter_test:
