@@ -12,6 +12,22 @@ class UserService {
     });
   }
 
+  static Future<void> updateUser(String uid, String url) async {
+    userCollection.doc(uid).update({
+      'photoUrl': url,
+    });
+  }
+
+  static Future<String> uploadImage(String uid, File image) async {
+    String fileName = 'profile/$uid/profile.png';
+
+    Reference ref = FirebaseStorage.instance.ref().child(fileName);
+    UploadTask task = ref.putFile(image);
+    TaskSnapshot snapshot = await task.whenComplete(() => ref.getDownloadURL());
+
+    return snapshot.ref.getDownloadURL();
+  }
+
   static Future<UserModel> getUser(String uid) async {
     DocumentSnapshot snapshot = await userCollection.doc(uid).get();
 

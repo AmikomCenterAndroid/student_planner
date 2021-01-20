@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -10,9 +13,6 @@ import 'package:velocity_x/velocity_x.dart';
 import 'package:student_planner/model/models.dart';
 
 import '../service/services.dart';
-import '../util/utils.dart';
-import '../util/utils.dart';
-import '../util/utils.dart';
 import '../util/utils.dart';
 
 part 'login_screen.dart';
