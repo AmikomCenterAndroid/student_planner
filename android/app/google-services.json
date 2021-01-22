@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "488830798934",
+    "project_id": "amikomcenter-2ecad",
+    "storage_bucket": "amikomcenter-2ecad.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:488830798934:android:435a9adeab862b92eabff7",
+        "android_client_info": {
+          "package_name": "com.kardusinfo.student_planner"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "488830798934-vkeflr8n5clasjmlo6ncftfbvg6prig1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.kardusinfo.student_planner",
+            "certificate_hash": "e8e7e257077d86d871911e033e6ba79f684c684b"
+          }
+        },
+        {
+          "client_id": "488830798934-7furpn8gfm4j9i7ud7pavlkjji8sdaiu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDjQLEBPUROhA45zuStJTSZoItzb8GoxRU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "488830798934-7furpn8gfm4j9i7ud7pavlkjji8sdaiu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
