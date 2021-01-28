@@ -19,3 +19,6 @@ part 'login_screen.dart';
 part 'register_screen.dart';
 part 'home_screen.dart';
 part 'splash_screen.dart';
+part 'dashboard.dart';
+part 'list_tugas.dart';
+part 'profile.dart';
